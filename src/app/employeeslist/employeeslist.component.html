@@ -1,0 +1,46 @@
+<div class='panel panel-primary' style="text-align:center">
+	<div class='panel-heading'>
+		<h3 >Employee List</h3><br>
+	</div>
+	<div class='panel-body'>
+		<div class='row'>
+			<div class='col-md-2'>Filter by:</div>
+			<div class='col-md-4'>
+				<input id = 'filter' type='text' [(ngModel)]='nameFilter' />
+			</div>
+    </div><br>
+    <div class='row' >
+			<div id="count" class='col-md-2' *ngIf='employees && employees.length'>Total Number of Employees:{{employees.length}}</div><br>
+		</div>
+		<table align='center' *ngIf='employees && employees.length'>
+			<thead>
+				<tr>
+					<th style="min-width: 80px;">Emp ID</th>
+					<th style="min-width: 150px;">Name</th>
+					<th style="min-width: 150px;">Location</th>
+          			<th style="min-width: 150px;">Email</th>
+          			<th style="min-width: 150px;">Mobile</th>
+					<th style="width:60px;">Edit</th>
+					<th style="width:60px;">Delete</th>
+				</tr>
+			</thead>
+			<tbody>
+            <tr *ngFor='let employee of employees | employeesfilter: nameFilter; let i = index;'>
+					<td>
+						<a [routerLink]="employee.id">{{ employee.id}}</a>
+          </td>
+          			<td id="{{'name' + (i + 1)}}">{{ employee.name | uppercase }}</td>
+					<td id="{{'loc' + (i + 1)}}">{{ employee.location }}</td>
+					<td id="{{'email' + (i + 1)}}">{{ employee.email }}</td>
+					<td id="{{'mob' + (i + 1)}}">{{ employee.mobile }}</td>
+					<td>
+						<a [routerLink]="['/editEmployee',employee.id]" >Edit{{ employee.id}}</a>
+					</td>
+					<td>
+						<a (click)="deleteEmployee(employee.id)">Delete{{ employee.id}}</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>

@@ -1,0 +1,26 @@
+<div  style="text-align:center">
+	<h3>Employee Details</h3>
+	<div >
+		<div>
+			<label for="id" >ID:</label>
+			<input id="id" value={{employee.id}}>
+		</div>
+		<div>
+			<label for="name">Name:</label>
+			<input id="name" value={{employee.name}}>
+		</div>
+		<div>
+			<label for="location">Location:</label>
+			<input id="location" value={{employee.location}}>
+		</div>
+		<div>
+			<label for="email">Email:</label>
+			<input id="email" value={{employee.email}}>
+		</div>
+		<div>
+			<label for="mobile">Mobile:</label>
+			<input id="mobile" value={{employee.mobile}}>
+		</div>
+	</div>
+	<button  id="back" (click)="goBack()">Back</button>
+</div>
